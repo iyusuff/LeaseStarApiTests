@@ -41,6 +41,7 @@ public class FileController {
         }
         catch(FileNotFoundException ex) {
             logger.debug("FileController: Unable to open file '" + filePath + "'");                
+            logger.debug(ex.getStackTrace());
         }
         catch(IOException ex) {
         	logger.debug("FileController: Error reading file '" + filePath + "'");                  
