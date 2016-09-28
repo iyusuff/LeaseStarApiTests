@@ -1,5 +1,3 @@
-"# LeaseStarApiTests" 
-
 Setup your environment
 ======================
 Install java: http://www.oracle.com/technetwork/java/javase/downloads/index.html
