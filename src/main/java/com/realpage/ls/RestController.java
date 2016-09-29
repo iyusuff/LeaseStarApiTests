@@ -1,6 +1,8 @@
 package com.realpage.ls;
 
 
+import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import org.apache.log4j.Logger;
 import com.sun.jersey.api.client.Client;
@@ -9,20 +11,29 @@ import com.sun.jersey.api.client.WebResource;
 
 public class RestController {
 	final static Logger logger = Logger.getLogger(RestController.class);
+	String authHeader = "";
 	
 	public RestController(){
+	}
+	public RestController(String authHeader){
+		this.authHeader = authHeader;
 	}
 
 	public String doGet(String endPoint){
 		String res = null;
 
 		try {
-			Client client = Client.create();
-
 			logger.debug("RestController: Calling endPoint: " + endPoint);
+			Client client = Client.create();
 			WebResource webResource = client.resource(endPoint);
-			ClientResponse response = webResource.accept("application/json").get(ClientResponse.class);
-
+			
+			//Pattern: http://juristr.com/blog/2015/05/jersey-webresource-ignores-headers/
+			WebResource.Builder builder = webResource.accept(MediaType.APPLICATION_JSON);
+			builder.type(MediaType.APPLICATION_JSON);
+			if(authHeader!="") 
+				builder.header(HttpHeaders.AUTHORIZATION, authHeader);
+			ClientResponse response = builder.get(ClientResponse.class);
+			
 			String error = handleError(response);
 			if(error!=null) 
 				res = error;

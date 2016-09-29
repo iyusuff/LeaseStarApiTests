@@ -13,6 +13,7 @@ public class ServiceTest{
 	RestController restMan = new RestController();
 	FileController fileMan = null;
 	String url = null;
+	String authHeader = null;
 	String payload = null;
 	Properties props = null;	
 	
@@ -20,6 +21,8 @@ public class ServiceTest{
 	public void setup(){
 		props = propsMan.getProperties("config.properties");
 		url = props.getProperty("host") + props.getProperty("endPointGet");	
+		authHeader = props.getProperty("authHeader");
+		restMan = new RestController(authHeader);
 	}
 	
 	@Test
