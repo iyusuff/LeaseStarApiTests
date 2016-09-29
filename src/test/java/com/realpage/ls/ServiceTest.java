@@ -28,7 +28,7 @@ public class ServiceTest{
 	@Test
 	public void testPositive() {
 		//Expected response from service
-		fileMan = new FileController(".\\data\\output\\out1.json");
+		fileMan = new FileController("./data/output/out1.json");
 		String expected = fileMan.read();
 		
 		//Actual response from service
