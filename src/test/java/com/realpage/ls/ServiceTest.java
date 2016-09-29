@@ -4,6 +4,8 @@ import org.testng.annotations.AfterSuite;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Test;
 import com.realpage.ls.RestController;
+
+import java.io.File;
 import java.util.Properties;
 import org.testng.Assert;
 import static net.javacrumbs.jsonunit.JsonAssert.*;
@@ -16,6 +18,7 @@ public class ServiceTest{
 	String authHeader = null;
 	String payload = null;
 	Properties props = null;	
+	String outputFilePath = "." + File.separator + "data" + File.separator + "output" + File.separator + "out1.json";
 	
 	@BeforeSuite()
 	public void setup(){
@@ -28,7 +31,7 @@ public class ServiceTest{
 	@Test
 	public void testPositive() {
 		//Expected response from service
-		fileMan = new FileController("./data/output/out1.json");
+		fileMan = new FileController(outputFilePath);
 		String expected = fileMan.read();
 		
 		//Actual response from service
