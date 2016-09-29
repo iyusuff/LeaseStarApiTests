@@ -28,6 +28,11 @@ public class ServiceTest{
 		restMan = new RestController(authHeader);
 	}
 	
+	/*
+	 * Test for https://docs.simplyrets.com/api/index.html#!/default/get_openhouses 
+	 * Example:
+	 * curl -X GET --header "Accept: application/json" --header "Authorization: Basic c2ltcGx5cmV0czpzaW1wbHlyZXRz" "https://api.simplyrets.com/openhouses"
+	 */
 	@Test
 	public void testPositive() {
 		//Expected response from service

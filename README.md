@@ -2,7 +2,14 @@
 
 This project contains remote integration tests for RealPage Property OS APIs.
 
-Setup your environment
+To execute tests
+
+* Use TravisCI: https://travis-ci.org/iyusuff/LeaseStarApiTests/builds
+* Use steps below:
+	* git clone
+	* mvn clean install
+
+Setup your development environment
 
 * Install java: http://www.oracle.com/technetwork/java/javase/downloads/index.html
 * Setup JAVA_HOME
